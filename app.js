@@ -10,13 +10,15 @@ function pesquisar() {
     campoPesquisa = campoPesquisa.toLowerCase()
     let resultados = "";
     let nome = "";
+    let descricao = "";
     let tags = "";
 
     for (let dado of dados) {
         nome = dado.nome.toLowerCase()
+        tags = dado.descricao.toLowerCase()
         tags = dado.tags.toLowerCase()
         
-        if (nome.includes(campoPesquisa) || tags.includes(campoPesquisa)) {
+        if (nome.includes(campoPesquisa) || descricao.includes(campoPesquisa) || tags.includes(campoPesquisa)) {
             resultados += `
             <div class="item-resultado">
                 <h2>
