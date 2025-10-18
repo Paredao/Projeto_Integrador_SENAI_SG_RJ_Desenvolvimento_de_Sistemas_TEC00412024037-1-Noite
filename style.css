@@ -4,4 +4,17 @@ body h1{
 font-family: Alkatra, sans-serif;
 font-weight: 700;
 font-style: normal;
+font-size: 500%;
+}
+
+main{
+font-family: Barlow, sans-serif;;
+font-weight: 100;
+font-style: normal;    
+}
+
+footer {
+  margin-top: auto; 
+  background-color: #f0f0f0;
+  padding: 20px; 
 }
