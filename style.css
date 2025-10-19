@@ -79,7 +79,7 @@ footer {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Barlow";
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -101,7 +101,7 @@ body {
 }
 
 .logo {
-
+    font-family: 'Alkatra';
     font-size: 28px;
     font-weight: bold;
 }
@@ -336,26 +336,26 @@ body {
 
 /* ===== Responsividade ===== */
 @media (max-width: 992px) {
-  .search-bar {
+    .search-bar {
         order: 3;
         width: 100%;
         margin-top: 10px;
   }
 
-  .header-actions {
+    .header-actions {
         display: none;
   }
 
-  .menu-toggle {
+    .menu-toggle {
         display: block;
   }
 
-  .banner {
+    .banner {
         margin: 20px;
         height: 220px;
   }
 
-  .banner-text h1 {
+    .banner-text h1 {
         font-size: 24px;
   }
 }
@@ -464,6 +464,7 @@ body.dark-mode .tags span {
 }
 
 footer {
+    font-family: 'Barlow';
     margin-top: auto; 
     background-color: #000000;
     padding: 20px; 
