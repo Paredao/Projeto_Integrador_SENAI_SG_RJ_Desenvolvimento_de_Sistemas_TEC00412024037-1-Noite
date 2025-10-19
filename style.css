@@ -263,17 +263,17 @@ body {
 }
 
 .banner-text h1 {
-    font-size: 36px;
+    font-size: 50px;
     margin-bottom: 10px;
 }
 
 .banner-text p {
-    font-size: 18px;
+    font-size: 30px;
     margin-bottom: 6px;
 }
 
 .banner-text span {
-    font-size: 14px;
+    font-size: 20px;
     opacity: 0.8;
 }
 
@@ -329,7 +329,7 @@ body {
 
 .preco {
     font-size: 18px;
-    color: #000;
+    color: #ffffff;
     font-weight: bold;
     margin-top: 5px;
 }
