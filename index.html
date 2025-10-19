@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +12,8 @@
 
 <body>
     <header>
-        <h1>Allugou</h1>
+        <section>
+            <h1>Allugou</h1>
         <div class="navegacao">
             <nav>
                 <ul class="ul">                
@@ -22,9 +23,10 @@
                 </ul>
             </nav>
         </div>
+        </section>
     </header>
     <main>
-        <section>
+        <section class="pesquisa">
             <input type="text" placeholder="Pesquisar item" id="campo-pesquisa">
             <button onclick="pesquisar()">Pesquisar</button>
         </section>
@@ -33,12 +35,104 @@
         </section>
         <link rel="stylesheet" href="style.css">
     </main>
-    <footer>
+    <footer position="bottom">
         <p>
-            SENAI/SG/RJ - 2025 - AlugoW. Desenvolvimento de Sistemas.
+            SENAI/SG/RJ - 2025 - Allugou. Desenvolvimento de Sistemas.
         </p>
     </footer>
     <script src="app.js"></script>
 </body>
 
-</html> 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alugow - Locações</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  
+  <header class="header">
+    <div class="logo">Alug<span>ow</span></div>
+
+    <button class="menu-toggle">☰</button>
+
+    <div class="search-bar">
+      <input type="text" placeholder="O que está precisando?" />
+      <button class="search-btn">🔍</button>
+    </div>
+
+    <div class="header-actions">
+      <button class="meus-anuncios">📦 Seus anúncios</button>
+      <button class="anuncie">Anuncie agora!</button>
+      <button class="entrar">Entrar</button>
+      <button class="modo-toggle">🌙</button>
+    </div>
+  </header>
+
+  
+  <nav class="mobile-nav">
+    <button class="meus-anuncios">📦 Seus anúncios</button>
+    <button class="anuncie">Anuncie agora!</button>
+    <button class="entrar">Entrar</button>
+  </nav>
+
+  
+  <section class="categorias">
+    <h2>Aqui temos:</h2>
+    <div class="tags">
+      <span>Cadeiras de festa</span>
+      <span>Câmera fotográfica</span>
+      <span>Caixa de som</span>
+      <span>Máquina de fliperama</span>
+      <span>Nível a Laser</span>
+      <span>Cama elástica</span>
+      <span>Trena</span>
+    </div>
+    <a href="#" class="mais">E muito mais...</a>
+  </section>
+
+  
+  <section class="banner">
+    <div class="banner-slide active">
+      <div class="banner-text">
+        <h1>Câmeras são frágeis.</h1>
+        <p>Não perca um freela porque a sua quebrou.</p>
+        <span>Precisou? Alugow.</span>
+      </div>
+      <img src="images.img/banner1.jpg" alt="Banner principal" />
+    </div>
+  </section>
+
+  
+  <section class="produtos">
+    <h2>Ferramentas para construção civil</h2>
+    <div class="produtos-container">
+      <div class="produto">
+        <img src="assets/img/produto1.jpg" alt="Nível a laser" />
+        <h3>Nível Laser Hilti PR 30 HVS</h3>
+        <p class="preco">R$ 999,99</p>
+      </div>
+      <div class="produto">
+        <img src="assets/img/produto2.jpg" alt="Betoneira" />
+        <h3>Betoneira Profissional</h3>
+        <p class="preco">R$ 999,99</p>
+      </div>
+      <div class="produto">
+        <img src="assets/img/produto3.jpg" alt="Serra elétrica" />
+        <h3>Serra de Corte Industrial</h3>
+        <p class="preco">R$ 999,99</p>
+      </div>
+      <div class="produto">
+        <img src="assets/img/produto4.jpg" alt="Laser de medição" />
+        <h3>Laser de medição digital</h3>
+        <p class="preco">R$ 999,99</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
