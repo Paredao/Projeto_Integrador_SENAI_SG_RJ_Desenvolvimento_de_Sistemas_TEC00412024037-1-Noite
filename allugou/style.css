@@ -52,12 +52,99 @@ main {
     flex-grow: 1;
 }
 
-footer {
-    position: relative;
-    width: 100%;
-    padding: 1%;
-    background: #022b2b;
+/* ============================ */
+/*        RODAPÉ DO SITE        */
+/* ============================ */
+
+.footer {
+    background-color: #111;
+    color: #222;
+    padding: 50px 0 30px;
+    font-family: "Poppins", sans-serif;
+    border-top: 2px solid #e0e0e0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.footer-col h3 {
+    font-size: 1.2rem;
+    color: #0078f0;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-col p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #e9e9e9;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #0077b6;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #005f8c;
+    text-decoration: underline;
+}
+
+/* Redes sociais */
+.redes-sociais li a {
+    font-weight: 600;
+}
+
+.footer-bottom {
     text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #e9e9e9;
+}
+
+@media (max-width: 700px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-col h3 {
+        font-size: 1rem;
+    }
+
+    .footer-col p, .footer-col ul li a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: 25px;
+    }
 }
 
 /* ===== Menu Mobile ===== */
