@@ -1,11 +1,11 @@
 @import url("https://use.typekit.net/izf6yiy.css");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Barlow";
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Barlow";
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
@@ -367,7 +367,7 @@ main {
 
 .preco {
     font-size: 18px;
-    color: #fff;
+    color: #000000;
     font-weight: bold;
     margin-top: 5px;
 }
@@ -459,6 +459,10 @@ main {
         background: #1a1a1a;
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
   }
+
+    .preco {
+        color: #fff;
+    }
 
     .banner-slide {
         background: #111;
