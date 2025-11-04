@@ -99,12 +99,12 @@ main {
 
 .footer-col ul li a {
     text-decoration: none;
-    color: #0077b6;
+    color: #00a6ff;
     transition: color 0.3s ease;
 }
 
 .footer-col ul li a:hover {
-    color: #005f8c;
+    color: #20b8ff;
     text-decoration: underline;
 }
 
@@ -430,35 +430,35 @@ main {
     body {
         background: #0b0b0b;
         color: #f2f2f2;
-  }
+    }
 
     .header {
         background: #011d1d;
-  }
+    }
 
     .search-bar {
         background: #222;
-  }
+    }
     .search-bar input {
         background: #222;
         color: #eee;
-  }
+    }
 
     .categorias h2,
     .produtos h2 {
         color: #fff;
-  }
+    }
 
     .tags span {
         background: #013c3c;
         border-color: #009d9d;
         color: #a5ffef;
-  }
+    }
 
     .produto {
         background: #1a1a1a;
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
-  }
+    }
 
     .preco {
         color: #fff;
@@ -466,11 +466,11 @@ main {
 
     .banner-slide {
         background: #111;
-  }
+    }
 
     .mais {
         color: #a5ffef;
-  }
+    }
 }
 
 /* Mostrar menu mobile */
