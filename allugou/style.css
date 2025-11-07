@@ -700,3 +700,63 @@ main {
   text-decoration: none;    
   color: #e6e6e6;           
 }
+
+/* ============================ */
+/*    LISTAGEM DE PRODUTOS DA API */
+/* ============================ */
+
+.api-produtos {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.api-produtos h2 {
+    color: #003366;
+    margin-bottom: 30px;
+}
+
+.lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+.lista-produtos .produto {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 250px;
+    transition: transform 0.2s ease;
+}
+
+.lista-produtos .produto:hover {
+    transform: translateY(-3px);
+}
+
+.lista-produtos .produto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.lista-produtos .produto h3 {
+    color: #003366;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+}
+
+.lista-produtos .produto p {
+    margin: 4px 0;
+    color: #555;
+}
+
+.lista-produtos .preco {
+    color: #0077b6;
+    font-weight: 600;
+    margin-top: 8px;
+}
