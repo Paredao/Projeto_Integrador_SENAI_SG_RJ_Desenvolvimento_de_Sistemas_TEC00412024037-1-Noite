@@ -760,3 +760,18 @@ main {
     font-weight: 600;
     margin-top: 8px;
 }
+
+#usuario-logado {
+  color: #fff;
+  font-weight: 500;
+}
+
+#usuario-logado a {
+  color: #ffd700;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+#usuario-logado a:hover {
+  text-decoration: underline;
+}

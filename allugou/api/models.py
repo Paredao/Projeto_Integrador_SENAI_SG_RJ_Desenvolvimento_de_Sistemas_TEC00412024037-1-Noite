@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Produto(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='produtos')
     titulo = models.CharField(max_length=100)
     categoria = models.CharField(max_length=50)
     descricao = models.TextField()

@@ -1,70 +1,202 @@
-// ===== Carrossel Automático =====
-let currentSlide = 0;
-const slides = document.querySelectorAll(".banner-slide");
+// ===== Aguarda o carregamento do DOM =====
+document.addEventListener("DOMContentLoaded", () => {
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
+// ===== LOGIN DE USUÁRIO =====
+const formLogin = document.getElementById("form-login");
+if (formLogin) {
+  formLogin.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const msg = document.getElementById("msg-login");
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Login bem-sucedido:", data);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.username);
+        msg.textContent = "✅ Login realizado com sucesso!";
+        msg.style.color = "green";
+        setTimeout(() => (window.location.href = "index.html"), 1000);
+      } else {
+        msg.textContent = "❌ Usuário ou senha inválidos.";
+        msg.style.color = "red";
+      }
+    } catch (err) {
+      console.error("Erro ao logar:", err);
+      msg.textContent = "Erro de conexão com o servidor.";
+      msg.style.color = "red";
+    }
   });
 }
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
+// ===== GERENCIAR LOGIN / LOGOUT NO CABEÇALHO =====
+const token = localStorage.getItem("token");
+const username = localStorage.getItem("username");
+
+const btnLogin = document.getElementById("btn-login");
+const btnAnunciar = document.getElementById("btn-anunciar");
+const usuarioLogado = document.getElementById("usuario-logado");
+const nomeUsuario = document.getElementById("nome-usuario");
+const btnLogout = document.getElementById("btn-logout");
+
+if (token && username) {
+  if (btnLogin) btnLogin.style.display = "none";
+  if (usuarioLogado) usuarioLogado.style.display = "inline";
+  if (nomeUsuario) nomeUsuario.textContent = username;
+} else {
+  if (btnLogin) btnLogin.style.display = "inline";
+  if (usuarioLogado) usuarioLogado.style.display = "none";
 }
 
-setInterval(nextSlide, 5000);
+if (btnLogout) {
+  btnLogout.addEventListener("click", async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/logout/", {
+        method: "POST",
+        headers: token ? { Authorization: `Token ${token}` } : {},
+      });
 
-// ===== Menu Mobile =====
-const menuToggle = document.querySelector(".menu-toggle");
-const mobileNav = document.querySelector(".mobile-nav");
+      if (response.ok) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        alert("✅ Logout realizado com sucesso!");
+        window.location.href = "index.html";
+      } else {
+        alert("Erro ao sair da conta.");
+      }
+    } catch (err) {
+      console.error("Erro ao sair:", err);
+      alert("Erro ao conectar ao servidor.");
+    }
+  });
+}
 
-menuToggle.addEventListener("click", () => {
-  mobileNav.classList.toggle("show");
-});
-
-// ===== Envio do formulário de anúncio para a API =====
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("form-anuncio");
-
-  if (form) {
-    form.addEventListener("submit", async (e) => {
+if (btnAnunciar) {
+  btnAnunciar.addEventListener("click", (e) => {
+    if (!token) {
       e.preventDefault();
+      alert("⚠️ Você precisa estar logado para anunciar um produto.");
+      window.location.href = "login.html";
+    }
+  });
+}
 
-      const titulo = document.getElementById("titulo").value;
-      const categoria = document.getElementById("categoria").value;
-      const descricao = document.getElementById("descricao").value;
-      const preco = document.getElementById("preco").value;
-      const imagemInput = document.getElementById("imagem");
+// ===== CARROSSEL AUTOMÁTICO =====
+const slides = document.querySelectorAll(".banner-slide");
+if (slides.length > 0) {
+  let currentSlide = 0;
 
-      // Cria o FormData (para incluir texto e imagem)
-      const formData = new FormData();
-      formData.append("titulo", titulo);
-      formData.append("categoria", categoria);
-      formData.append("descricao", descricao);
-      formData.append("preco", preco);
-      if (imagemInput.files[0]) {
-        formData.append("imagem", imagemInput.files[0]);
-      }
-
-      try {
-        const response = await fetch("http://127.0.0.1:8000/api/produtos/", {
-          method: "POST",
-          body: formData,
-        });
-
-        if (response.ok) {
-          alert("✅ Produto cadastrado com sucesso!");
-          form.reset();
-        } else {
-          const error = await response.json();
-          console.error("Erro:", error);
-          alert("❌ Ocorreu um erro ao cadastrar o produto.");
-        }
-      } catch (err) {
-        console.error("Erro na conexão:", err);
-        alert("❌ Falha ao conectar com o servidor.");
-      }
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
     });
   }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  setInterval(nextSlide, 5000);
+}
+
+// ===== MENU MOBILE =====
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileNav = document.querySelector(".mobile-nav");
+if (menuToggle && mobileNav) {
+  menuToggle.addEventListener("click", () => {
+    mobileNav.classList.toggle("show");
+  });
+}
+
+// ===== ENVIO DE FORMULÁRIO DE ANÚNCIO =====
+const formAnuncio = document.getElementById("form-anuncio");
+if (formAnuncio) {
+  formAnuncio.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const titulo = document.getElementById("titulo").value;
+    const categoria = document.getElementById("categoria").value;
+    const descricao = document.getElementById("descricao").value;
+    const preco = document.getElementById("preco").value;
+    const imagemInput = document.getElementById("imagem");
+
+    const formData = new FormData();
+    formData.append("titulo", titulo);
+    formData.append("categoria", categoria);
+    formData.append("descricao", descricao);
+    formData.append("preco", preco);
+    if (imagemInput.files[0]) {
+      formData.append("imagem", imagemInput.files[0]);
+    }
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/produtos/", {
+        method: "POST",
+        headers: token ? { Authorization: `Token ${token}` } : {},
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("✅ Produto cadastrado com sucesso!");
+        formAnuncio.reset();
+      } else {
+        const error = await response.json();
+        console.error("Erro:", error);
+        alert("❌ Ocorreu um erro ao cadastrar o produto.");
+      }
+    } catch (err) {
+      console.error("Erro na conexão:", err);
+      alert("❌ Falha ao conectar com o servidor.");
+    }
+  });
+}
+
+// ===== LISTAGEM AUTOMÁTICA DE PRODUTOS =====
+const lista = document.getElementById("lista-produtos");
+if (lista) {
+  async function carregarProdutos() {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/produtos/");
+      if (!response.ok) throw new Error("Erro ao buscar produtos");
+      const produtos = await response.json();
+
+      if (produtos.length === 0) {
+        lista.innerHTML = "<p>Nenhum produto cadastrado ainda.</p>";
+        return;
+      }
+
+      lista.innerHTML = produtos
+        .map(
+          (p) => `
+          <div class="produto">
+            <img src="${
+              p.imagem
+                ? "http://127.0.0.1:8000" + p.imagem
+                : "assets/img/produto-placeholder.png"
+            }" alt="${p.titulo}" />
+            <h3>${p.titulo}</h3>
+            <p class="categoria">${p.categoria}</p>
+            <p class="descricao">${p.descricao}</p>
+            <p class="preco">R$ ${parseFloat(p.preco).toFixed(2)} / dia</p>
+          </div>`
+        )
+        .join("");
+    } catch (err) {
+      console.error("Erro ao carregar produtos:", err);
+      lista.innerHTML =
+        "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
+    }
+  }
+  carregarProdutos();
+}
 });

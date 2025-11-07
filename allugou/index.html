@@ -10,29 +10,20 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="logo">
-      <a href="index.html">Allugou</a>
-    </div>
-
-    <button class="menu-toggle">☰</button>
-
-    <div class="search-bar">
-      <input type="text" placeholder="O que está precisando?" />
-      <button class="search-btn">🔍</button>
-    </div>
-
-    <div class="header-actions">
-      <button class="meus-anuncios">📦 Seus anúncios</button>
-      <button class="anuncie">
-        <a href="anunciar.html">Anuncie agora!</a>
-      </button>
-      <button class="entrar-ou-registrar">
-        <a href="login.html">Entrar / Registrar</a>
-      </button>
-
-    </div>
-  </header>
+  <header class="cabecalho">
+  <h1><a href="index.html">Allugou</a></h1>
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="anunciar.html" id="btn-anunciar">Anuncie agora!</a></li>
+      <li><a href="login.html" id="btn-login">Entrar / Registrar</a></li>
+      <li id="usuario-logado" style="display: none;">
+        <span id="nome-usuario"></span> |
+        <a href="#" id="btn-logout">Sair</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
   <nav class="mobile-nav">
     <button class="meus-anuncios">📦 Seus anúncios</button>
