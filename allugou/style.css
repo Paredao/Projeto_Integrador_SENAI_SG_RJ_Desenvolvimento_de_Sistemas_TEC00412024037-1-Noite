@@ -379,54 +379,55 @@ main {
         order: 3;
         width: 100%;
         margin-top: 10px;
-  }
+    }
 
     .header-actions {
         display: none;
-  }
+    }
 
     .menu-toggle {
         display: block;
-  }
+    }
 
     .banner {
         margin: 20px;
         height: 220px;
-  }
+    }
 
     .banner-text h1 {
         font-size: 24px;
-  }
+    }
 }
 
 @media (max-width: 600px) {
     .categorias {
         padding: 20px;
-  }
+    }
 
     .produtos {
         padding: 20px;
-  }
+    }
 
     .banner-text {
         padding: 20px;
-  }
+    }
 
     .banner-text h1 {
         font-size: 20px;
-  }
+    }
 
     .tags {
         gap: 6px;
-  }
+    }
 
     .tags span {
         padding: 6px 10px;
         font-size: 13px;
-  }
+    }
 }
 
 /* ===== Tema Escuro ===== */
+
 @media (prefers-color-scheme: dark) {
     body {
         background: #0b0b0b;
@@ -572,15 +573,15 @@ main {
         width: 90%;
         margin: 50px auto;
         padding: 25px 20px;
-  }
+    }
 
     .login h2 {
         font-size: 1.5rem;
-  }
+    }
 
     .login button {
         font-size: 0.95rem;
-  }
+    }
 }
 
 .entrar-ou-registrar a {
@@ -594,4 +595,108 @@ main {
 
 .entrar-ou-registrar a:hover {
     text-decoration: none;      
+}
+
+/* ============================ */
+/*   PÁGINA DE ANÚNCIO DE PRODUTO */
+/* ============================ */
+
+.anunciar {
+    max-width: 700px;
+    margin: 60px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.anunciar h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.anunciar p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.form-anuncio {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-anuncio .campo-form label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-anuncio .campo-form input,
+.form-anuncio .campo-form select,
+.form-anuncio .campo-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-anuncio .campo-form input:focus,
+.form-anuncio .campo-form select:focus,
+.form-anuncio .campo-form textarea:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 4px rgba(0, 119, 182, 0.3);
+}
+
+.btn-publicar {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-publicar:hover {
+    background-color: #005f8c;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+    .anunciar {
+        width: 90%;
+        padding: 25px 20px;
+    }
+}
+
+.anuncie {
+  background-color: #b60600;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.anuncie:hover {
+  background-color: #8c0000;
+}
+
+.anuncie a {
+  color: #ffffff;           
+  text-decoration: none;    
+  font-weight: 600;         
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.anuncie a:hover {
+  text-decoration: none;    
+  color: #e6e6e6;           
 }

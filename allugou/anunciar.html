@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allugou - Anunciar produto</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><a href="index.html">Allugou</a></div>
+    <div class="search-bar">
+      <input type="text" placeholder="O que você está precisando?" />
+      <button class="search-btn">🔍</button>
+    </div>
+    <div class="header-actions">
+      <button class="entrar-ou-registrar"><a href="login.html">Entrar / Registrar</a></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="anunciar">
+      <h2>Cadastrar novo produto para locação</h2>
+      <p>Preencha os campos abaixo para anunciar seu produto na plataforma.</p>
+
+      <form class="form-anuncio">
+        <div class="campo-form">
+          <label for="titulo">Título do produto:</label>
+          <input type="text" id="titulo" name="titulo" placeholder="Ex: Furadeira Bosch 600W" required />
+        </div>
+
+        <div class="campo-form">
+          <label for="categoria">Categoria:</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Selecione...</option>
+            <option value="ferramentas">Ferramentas</option>
+            <option value="eventos">Cadeiras e Itens para eventos</option>
+            <option value="eletronicos">Eletrônicos</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+
+        <div class="campo-form">
+          <label for="descricao">Descrição:</label>
+          <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva o produto, seu estado e condições de uso." required></textarea>
+        </div>
+
+        <div class="campo-form">
+          <label for="preco">Preço de locação (por dia):</label>
+          <input type="number" id="preco" name="preco" placeholder="R$" min="1" step="0.01" required />
+        </div>
+
+        <div class="campo-form">
+          <label for="imagem">Imagem do produto:</label>
+          <input type="file" id="imagem" name="imagem" accept="image/*" required />
+        </div>
+
+        <button type="submit" class="btn-publicar">Publicar anúncio</button>
+      </form>
+    </section>
+  </main>
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3>Sobre nós</h3>
+      <p>
+        A <strong>Allugou</strong> é uma plataforma dedicada a facilitar o aluguel de produtos de forma prática, rápida e segura. 
+        Conectamos pessoas que precisam de equipamentos, ferramentas e objetos com quem os oferece.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Fale conosco</h3>
+      <ul>
+        <li><a href="#">📞 (21) 99999-9999</a></li>
+        <li><a href="#">✉️ contato@allugou.com.br</a></li>
+        <li><a href="#">📍 São Gonçalo - RJ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Tire suas dúvidas</h3>
+      <ul>
+        <li><a href="#">Como funciona?</a></li>
+        <li><a href="#">Segurança e pagamentos</a></li>
+        <li><a href="#">Política de devolução</a></li>
+        <li><a href="#">Ajuda e suporte</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Redes sociais</h3>
+      <ul class="redes-sociais">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>SENAI/SG/RJ - 2025 - Allugou. Desenvolvimento de Sistemas.</p>
+  </div>
+  </footer>
+</body>
+</html>
