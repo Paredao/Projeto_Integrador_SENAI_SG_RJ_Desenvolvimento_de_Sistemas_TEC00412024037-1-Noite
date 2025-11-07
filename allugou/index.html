@@ -10,18 +10,26 @@
 
 <body>
   <header class="cabecalho">
-  <h1><a href="index.html">Allugou</a></h1>
-  <nav class="menu">
-    <ul>
-      <li><a href="index.html">Início</a></li>
-      <li><a href="anunciar.html" id="btn-anunciar">Anuncie agora!</a></li>
-      <li><a href="login.html" id="btn-login">Entrar / Registrar</a></li>
-      <li id="usuario-logado" style="display: none;">
-        <span id="nome-usuario"></span> |
-        <a href="#" id="btn-logout">Sair</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="cabecalho-conteudo">
+    <h1 class="logo">
+      <a href="index.html">Allugou</a>
+    </h1>
+
+    <div class="barra-pesquisa">
+      <input type="text" placeholder="Buscar produtos, categorias..." />
+      <button class="btn-pesquisar">🔍</button>
+    </div>
+
+    <nav class="navegacao">
+      <a href="meus-anuncios.html" class="nav-btn">Meus anúncios</a>
+      <a href="anunciar.html" class="nav-btn">Anuncie</a>
+      <a href="login.html" id="btn-login" class="nav-btn">Entrar / Registrar</a>
+      <span id="usuario-logado" style="display: none;">
+        <span id="nome-usuario"></span>
+        <a href="#" id="btn-logout" class="nav-btn sair">Sair</a>
+      </span>
+    </nav>
+  </div>
 </header>
 
   <nav class="mobile-nav">
