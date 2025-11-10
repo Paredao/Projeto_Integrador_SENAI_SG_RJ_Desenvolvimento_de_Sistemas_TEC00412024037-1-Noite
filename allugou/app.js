@@ -180,7 +180,9 @@ if (lista) {
           (p) => `
           <div class="produto">
             <img src="${
-              p.imagem
+              p.imagem?.startsWith("http")
+                ? p.imagem
+                : p.imagem
                 ? "http://127.0.0.1:8000" + p.imagem
                 : "assets/img/produto-placeholder.png"
             }" alt="${p.titulo}" />
