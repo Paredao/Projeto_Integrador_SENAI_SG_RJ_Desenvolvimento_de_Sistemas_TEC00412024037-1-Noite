@@ -19,7 +19,6 @@ if (formLogin) {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Login bem-sucedido:", data);
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", data.username);
         msg.textContent = "✅ Login realizado com sucesso!";
@@ -68,14 +67,14 @@ if (btnLogout) {
       if (response.ok) {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
-        alert("✅ Logout realizado com sucesso!");
+        alert("Sessão encerrada com sucesso.");
         window.location.href = "index.html";
       } else {
-        alert("Erro ao sair da conta.");
+        alert("Não foi possível encerrar a sessão. Tente novamente.");
       }
     } catch (err) {
       console.error("Erro ao sair:", err);
-      alert("Erro ao conectar ao servidor.");
+      alert("Falha na conexão com o servidor. Tente novamente.");
     }
   });
 }
@@ -84,7 +83,7 @@ if (btnAnunciar) {
   btnAnunciar.addEventListener("click", (e) => {
     if (!token) {
       e.preventDefault();
-      alert("⚠️ Você precisa estar logado para anunciar um produto.");
+      alert("Você precisa estar logado para anunciar um produto.");
       window.location.href = "login.html";
     }
   });
@@ -147,16 +146,16 @@ if (formAnuncio) {
       });
 
       if (response.ok) {
-        alert("✅ Produto cadastrado com sucesso!");
+        alert("Produto publicado com sucesso!");
         formAnuncio.reset();
       } else {
         const error = await response.json();
         console.error("Erro:", error);
-        alert("❌ Ocorreu um erro ao cadastrar o produto.");
+        alert("Ocorreu um problema ao publicar o produto.");
       }
     } catch (err) {
       console.error("Erro na conexão:", err);
-      alert("❌ Falha ao conectar com o servidor.");
+      alert("Falha ao conectar com o servidor.");
     }
   });
 }
@@ -203,26 +202,29 @@ if (lista) {
       document.querySelectorAll(".btn-excluir").forEach((btn) => {
         btn.addEventListener("click", async () => {
           const id = btn.dataset.id;
-          if (confirm("Tem certeza que deseja excluir este produto?")) {
-            try {
-              const token = localStorage.getItem("token");
-              const response = await fetch(`http://127.0.0.1:8000/api/produtos/${id}/`, {
-                method: "DELETE",
-                headers: {
-                  Authorization: `Token ${token}`,
-                },
-              });
+          const confirmar = confirm("Deseja realmente remover este anúncio?");
+          if (!confirmar) return;
 
-              if (response.ok) {
-                alert("✅ Produto excluído com sucesso!");
-                btn.parentElement.remove();
-              } else {
-                alert("❌ Você não tem permissão para excluir este produto.");
-              }
-            } catch (err) {
-              console.error("Erro ao excluir:", err);
-              alert("Erro ao tentar excluir o produto.");
+          try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(`http://127.0.0.1:8000/api/produtos/${id}/`, {
+              method: "DELETE",
+              headers: {
+                Authorization: `Token ${token}`,
+              },
+            });
+
+            if (response.ok) {
+              alert("O anúncio foi removido com sucesso.");
+              btn.parentElement.remove();
+            } else if (response.status === 403) {
+              alert("Você não tem permissão para excluir este anúncio.");
+            } else {
+              alert("Não foi possível excluir o anúncio. Tente novamente.");
             }
+          } catch (err) {
+            console.error("Erro ao excluir:", err);
+            alert("Falha ao tentar excluir o anúncio.");
           }
         });
       });
