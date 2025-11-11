@@ -14,6 +14,15 @@ class ProdutoViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(usuario=self.request.user)
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if instance.usuario != request.user:
+            from rest_framework.response import Response
+            from rest_framework import status
+            return Response({'erro': 'Você não tem permissão para excluir este produto.'}, status=status.HTTP_403_FORBIDDEN)
+        self.perform_destroy(instance)
+        return Response({'mensagem': 'Produto excluído com sucesso.'})
+
 class CustomAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data, context={'request': request})
