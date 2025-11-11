@@ -202,3 +202,44 @@ if (lista) {
   carregarProdutos();
 }
 });
+
+// Dentro da função carregarProdutos()
+lista.innerHTML = produtos
+  .map((p) => `
+    <div class="produto">
+      <img src="${p.imagem ? "http://127.0.0.1:8000" + p.imagem : "assets/img/produto-placeholder.png"}" alt="${p.titulo}" />
+      <h3>${p.titulo}</h3>
+      <p class="categoria">${p.categoria}</p>
+      <p class="descricao">${p.descricao}</p>
+      <p class="preco">R$ ${parseFloat(p.preco).toFixed(2)} / dia</p>
+      ${p.usuario === localStorage.getItem("username") ? 
+        `<button class="btn-excluir" data-id="${p.id}">Excluir</button>` : ""}
+    </div>
+  `).join("");
+
+// Botão excluir
+document.querySelectorAll(".btn-excluir").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const id = btn.dataset.id;
+    if (confirm("Tem certeza que deseja excluir este produto?")) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch(`http://127.0.0.1:8000/api/produtos/${id}/`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        if (response.ok) {
+          alert("✅ Produto excluído com sucesso!");
+          btn.parentElement.remove();
+        } else {
+          alert("❌ Você não tem permissão para excluir este produto.");
+        }
+      } catch (err) {
+        console.error("Erro ao excluir:", err);
+        alert("Erro ao tentar excluir o produto.");
+      }
+    }
+  });
+});
