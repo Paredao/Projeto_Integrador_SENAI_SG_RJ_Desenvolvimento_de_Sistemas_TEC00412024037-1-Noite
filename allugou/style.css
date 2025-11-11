@@ -871,3 +871,18 @@ main {
 .mobile-nav.show {
   display: flex;
 }
+
+.btn-excluir {
+  background-color: #b60600;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-excluir:hover {
+  background-color: #8c0000;
+}
